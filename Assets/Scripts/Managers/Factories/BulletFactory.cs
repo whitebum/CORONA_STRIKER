@@ -26,6 +26,8 @@ public sealed class BulletFactory : MonoBehaviour
         originals   = new List<BaseBullet>(owner.myBullets);
         bulletBank  = new List<BaseBullet>();
 
+        Debug.Log("asd");
+
         foreach (var original in originals)
         {
             var storage = new GameObject($"{original.name}'s Storage").transform;
