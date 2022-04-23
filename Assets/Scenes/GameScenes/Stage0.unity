@@ -161,7 +161,7 @@ MonoBehaviour:
   <myBullets>k__BackingField: []
   <myMagazine>k__BackingField: {fileID: 0}
   <entityRenderer>k__BackingField: {fileID: 0}
-  <entityAnim>k__BackingField: {fileID: 0}
+  <entityAnims>k__BackingField: []
   <curCondition>k__BackingField: 0
   <playerLv>k__BackingField: 1
   <curAttackTime>k__BackingField: 0

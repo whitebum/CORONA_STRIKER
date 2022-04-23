@@ -6,16 +6,14 @@ public class BaseBullet : MonoBehaviour
 {
     #region Bullet's Base Datas
     [field: Header("Bullet's Base Datas")]
-    [field: SerializeField] protected BulletFactory   home        { get; private set; } = null;
-    [field: SerializeField] protected float           moveSpeed   { get; private set; } = 0.0f;
+    [field: SerializeField] protected BulletFactory   home          { get; private set; } = null;
+
+    [property: SerializeField] public float moveSpeed { get => home.owner.bulletSpeed; }
+
+    [property: SerializeField] public float damage { get => home.owner.ATK; }
     #endregion
 
     #region Unity Messages
-    private void OnEnable()
-    {
-        SetBulletData();
-    }
-
     private void Update()
     {
         MoveBullet();
@@ -28,11 +26,6 @@ public class BaseBullet : MonoBehaviour
     #endregion
 
     #region Bullet's Movement Method
-    protected virtual void SetBulletData()
-    {
-        moveSpeed = home.owner.bulletSpeed;
-    }
-
     protected virtual void MoveBullet()
     {
         transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);

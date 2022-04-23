@@ -28,6 +28,8 @@ public sealed class PlayerCtrl : BaseEntity
     #region
     protected override void SetEntityDatas()
     {
+        tag = "Player";
+
         entityHP = 5.0f;
         moveSpeed = 10.0f;
         ATK = 1.0f;
@@ -50,9 +52,24 @@ public sealed class PlayerCtrl : BaseEntity
     {
         curCondition = ConditionType.DEAD;
     }
+
+    protected override IEnumerator OnDamagedEntity(float damage)
+    {
+        yield break;
+    }
     #endregion
 
-    #region
+    #region 
+    public void SetHP(float value)
+    {
+        entityHP = value < maxPlayerHP ? value : maxPlayerHP;
+    }
+
+    public void SetLv(byte value)
+    {
+        playerLv = value < maxPlayerLv ? value : maxPlayerLv;
+    }
+
     private void PlayerMove()
     {
         var horizontal  = Input.GetAxisRaw("Horizontal");
@@ -79,18 +96,6 @@ public sealed class PlayerCtrl : BaseEntity
         {
             curAttackTime = 0.0f;
         }
-    }
-
-    public void GetHP(float value)
-    {
-        SoundManager.GetInstance().PlaySFX("SFX_PlayerHealed");
-        entityHP = value < maxPlayerHP ? value : maxPlayerHP;
-    }
-
-    public void GetLv(byte value)
-    {
-        SoundManager.GetInstance().PlaySFX("SFX_PlayerLvUp");
-        playerLv = value < maxPlayerLv ? value : maxPlayerLv;
     }
     #endregion
 }

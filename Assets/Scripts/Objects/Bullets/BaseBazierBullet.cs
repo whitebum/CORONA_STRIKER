@@ -15,17 +15,15 @@ public abstract class BaseBazierBullet : BaseBullet
     #endregion
 
     #region
-    protected override void SetBulletData()
+    private void Awake()
     {
-        base.SetBulletData();
-
         maxMoveTime = Random.Range(0.8f, 1.0f);
 
         checkPoints[0] = home.transform.position;
 
-        checkPoints[1] = checkPoints[0] + 
-            (6.0f * Random.Range(-1.0f, 1.0f) * home.transform.right)+
-            (6.0f * Random.Range(-1.0f, 1.0f) * home.transform.up)+
+        checkPoints[1] = checkPoints[0] +
+            (6.0f * Random.Range(-1.0f, 1.0f) * home.transform.right) +
+            (6.0f * Random.Range(-1.0f, 1.0f) * home.transform.up) +
             (6.0f * Random.Range(-1.0f, 1.0f) * home.transform.forward);
 
         checkPoints[2] = checkPoints[0] +
@@ -35,7 +33,9 @@ public abstract class BaseBazierBullet : BaseBullet
 
         checkPoints[3] = myTarget.transform.position;
     }
+    #endregion
 
+    #region
     protected override void MoveBullet()
     {
         if (curMoveTime > maxMoveTime)
