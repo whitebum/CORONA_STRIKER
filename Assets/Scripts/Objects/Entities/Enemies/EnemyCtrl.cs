@@ -15,10 +15,11 @@ public abstract class EnemyCtrl : BaseEntity
     [Header("Enemy's Expension Datas")]
     [SerializeField] public EnemyFactory home = null;
 
-    [SerializeField] protected ConditionType    curConditon = ConditionType.READY;
-    [SerializeField] protected Transform        myTarget    = null;
-    [SerializeField] protected uint             dropScore   = 0;
-    [SerializeField] protected float            painAmount  = 0.0f;
+    [SerializeField] protected ConditionType    curConditon         = ConditionType.READY;
+    [SerializeField] protected Transform        myTarget            = null;
+    [SerializeField] protected float            attackIntervalTime  = 0.0f;
+    [SerializeField] protected uint             dropScore           = 0;
+    [SerializeField] protected float            painAmount          = 0.0f;
     #endregion
 
     #region Unity Messages
@@ -60,13 +61,11 @@ public abstract class EnemyCtrl : BaseEntity
         tag = "Enemy";
 
         SetEnemyDatas();
-
-        myMagazine = GetComponent<BulletFactory>();
     }
 
     protected override void OnEnabledEntity()
     {
-        myTarget = FindObjectOfType<PlayerCtrl>().transform;
+        //myTarget = FindObjectOfType<PlayerCtrl>().transform;
     }
 
     protected override void OnUpdatedEntity()

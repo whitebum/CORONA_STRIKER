@@ -19,14 +19,12 @@ public sealed class BulletFactory : MonoBehaviour
     #endregion
 
     #region Unity Message
-    private void Awake()
+    private void Start()
     {
         owner       = GetComponent<BaseEntity>();
 
         originals   = new List<BaseBullet>(owner.myBullets);
         bulletBank  = new List<BaseBullet>();
-
-        Debug.Log("asd");
 
         foreach (var original in originals)
         {
@@ -58,7 +56,7 @@ public sealed class BulletFactory : MonoBehaviour
 
         if (!nowBullet)
         {
-            nowBullet = GetBulletInOriginal(type);
+            nowBullet = GetBulletInOriginals(type);
 
             nowBullet.home = this;
             nowBullet.transform.position    = spawnPos;
@@ -91,7 +89,7 @@ public sealed class BulletFactory : MonoBehaviour
         bulletBank.Add(usedBullet);
     }
 
-    private BaseBullet GetBulletInOriginal(BulletType type) => type switch
+    private BaseBullet GetBulletInOriginals(BulletType type) => type switch
     {
         BulletType.NORMAL => originals.Find((bullet) => bullet is BaseBullet),
         BulletType.BAZIER => originals.Find((bullet) => bullet is BaseBazierBullet),
