@@ -14,23 +14,12 @@ public abstract class BaseScene : MonoBehaviour
     #region Unity Messages
     private void Awake()
     {
-        try
-        {
-            var background = transform.Find("Background");
+        var background = transform.Find("Background");
 
-            backgroundRenderer  = background.GetComponent<SpriteRenderer>();
-            backgroundAnim      = background.GetComponent<Animator>();
-        } 
-        
-        catch (NullReferenceException ex)
-        {
-            return;
-        } 
-        
-        finally
-        {
-            InitSceneData();
-        }
+        backgroundRenderer  = background.GetComponent<SpriteRenderer>();
+        backgroundAnim      = background.GetComponent<Animator>();
+
+        InitSceneData();
     }
 
     private void Start()

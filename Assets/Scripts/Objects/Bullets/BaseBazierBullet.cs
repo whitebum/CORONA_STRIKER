@@ -35,7 +35,7 @@ public abstract class BaseBazierBullet : BaseBullet
     }
     #endregion
 
-    #region
+    #region BazierBullet's Base Method
     protected override void MoveBullet()
     {
         if (curMoveTime > maxMoveTime)
