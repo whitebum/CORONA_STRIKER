@@ -66,7 +66,7 @@ public abstract class EnemyCtrl : BaseEntity
 
     protected override void OnEnabledEntity()
     {
-        myTarget = FindObjectOfType<BaseEntity>().transform;
+        myTarget = FindObjectOfType<PlayerCtrl>().transform;
     }
 
     protected override void OnUpdatedEntity()
