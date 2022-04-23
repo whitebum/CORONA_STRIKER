@@ -32,14 +32,12 @@ public sealed class PlayerCtrl : BaseEntity
         {
             case "Enemy":
                 {
-                    var damage = collision.GetComponent<BaseEntity>().ATK / 2.0f;
-                    StartCoroutine(OnDamagedEntity(damage));
+                    StartCoroutine(OnDamagedEntity(0.25f));
                 }
                 break;
             case "EnemyBullet":
                 {
-                    var damage = collision.GetComponent<BaseBullet>().damage;
-                    StartCoroutine(OnDamagedEntity(damage));
+                    StartCoroutine(OnDamagedEntity(0.5f));
                 }
                 break;
             case "Item":
@@ -54,11 +52,10 @@ public sealed class PlayerCtrl : BaseEntity
     #region
     protected override void SetEntityDatas()
     {
-        tag = "Player";
+        tag         = "Player";
 
         entityHP    = maxPlayerHP;
         moveSpeed   = 10.0f;
-        ATK         = 1.0f;
         bulletSpeed = 30.0f;
 
         myBullets   = Resources.LoadAll<PlayerBullet>("");
@@ -109,7 +106,9 @@ public sealed class PlayerCtrl : BaseEntity
 
             else
             {
-                //SoundManager.GetInstance().PlaySFX("SFX_PlayerDamaged");
+                SoundManager.GetInstance().PlaySFX("SFX_PlayerHealed");
+
+                entityAnim.SetFloat("Player HP", entityHP);
 
                 var r = entityRenderer.color.r;
                 var g = entityRenderer.color.g;
@@ -128,13 +127,17 @@ public sealed class PlayerCtrl : BaseEntity
     #endregion
 
     #region 
-    public void SetHP(float value)
+    public void GetHP(float value)
     {
+        SoundManager.GetInstance().PlaySFX("SFX_PlayerHealed");
+
         entityHP = value < maxPlayerHP ? value : maxPlayerHP;
+        entityAnim.SetFloat("Player HP", entityHP);
     }
 
-    public void SetLv(byte value)
+    public void GetHP(byte value)
     {
+        SoundManager.GetInstance().PlaySFX("SFX_PlayerLvUp");
         playerLv = value < maxPlayerLv ? value : maxPlayerLv;
     }
 

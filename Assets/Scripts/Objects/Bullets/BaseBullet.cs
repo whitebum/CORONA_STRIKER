@@ -9,8 +9,6 @@ public class BaseBullet : MonoBehaviour
     [field: SerializeField] protected BulletFactory   home          { get; private set; } = null;
 
     [property: SerializeField] public float moveSpeed { get => home.owner.bulletSpeed; }
-
-    [property: SerializeField] public float damage { get => home.owner.ATK; }
     #endregion
 
     #region Unity Messages
