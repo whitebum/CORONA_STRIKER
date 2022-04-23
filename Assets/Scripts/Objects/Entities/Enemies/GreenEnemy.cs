@@ -20,6 +20,6 @@ public sealed class GreenEnemy : EnemyCtrl
 
     protected override void MoveEmemy()
     {
-        //transform.Translate(moveSpeed *  * Time.deltaTime);
+        transform.Translate( 3.0f * new Vector2(Mathf.Sin(moveSpeed * Time.time),-1) * Time.deltaTime);
     }
 }

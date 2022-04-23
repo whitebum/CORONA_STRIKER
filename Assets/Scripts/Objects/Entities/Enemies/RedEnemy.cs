@@ -7,7 +7,7 @@ public sealed class RedEnemy : EnemyCtrl
     protected override void SetEnemyDatas()
     {
         entityHP    = 10.0f;
-        moveSpeed   = 10.0f;
+        moveSpeed   = 2.0f;
         bulletSpeed = 30.0f;
 
         myBullets   = Resources.LoadAll<EnemyBullet>("Prefabs/Bullets/Enemy/RedBullet");
@@ -15,11 +15,14 @@ public sealed class RedEnemy : EnemyCtrl
 
     protected override IEnumerator AttackEnemy()
     {
-        yield return null;
+        var newBullet       = myMagazine.GetBullet(true, transform.position, 1.0f, Quaternion.identity) as BaseBazierBullet;
+        newBullet.myTarget  = myTarget;
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine("AttackEnemy");
     }
 
     protected override void MoveEmemy()
     {
-        transform.Translate(moveSpeed * Vector3.down * Time.deltaTime);
+        transform.Translate(moveSpeed * Vector2.down * Time.deltaTime);
     }
 }

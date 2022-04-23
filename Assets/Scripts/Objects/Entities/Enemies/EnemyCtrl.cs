@@ -76,7 +76,7 @@ public abstract class EnemyCtrl : BaseEntity
 
     protected override void OnDisabledEntity()
     {
-        home.ReturnEnemy(this);
+        //home.ReturnEnemy(this);
     }
 
     protected override IEnumerator OnDamagedEntity(float damage)
