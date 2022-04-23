@@ -58,7 +58,7 @@ public sealed class PlayerCtrl : BaseEntity
         moveSpeed   = 10.0f;
         bulletSpeed = 30.0f;
 
-        myBullets   = Resources.LoadAll<PlayerBullet>("Prefabs/Bullets/Player");
+        myBullets   = Resources.LoadAll<BaseBullet>("Prefabs/Bullets/Player/BlueBullet");
         myMagazine  = GetComponent<BulletFactory>();
 
         entityAnim.SetFloat("Player HP", entityHP);
