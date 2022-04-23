@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3794183336213170832}
   - component: {fileID: 3794183336213170863}
+  - component: {fileID: 3895575405601656635}
   - component: {fileID: 3794183336213170862}
   - component: {fileID: 3794183336213170860}
   - component: {fileID: 3794183336213170861}
@@ -48,17 +49,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <entityHP>k__BackingField: 0
   <moveSpeed>k__BackingField: 0
-  <ATK>k__BackingField: 0
   <bulletSpeed>k__BackingField: 0
   <myBullets>k__BackingField: []
   <myMagazine>k__BackingField: {fileID: 0}
   <entityRenderer>k__BackingField: {fileID: 0}
   <entityAnim>k__BackingField: {fileID: 0}
-  <home>k__BackingField: {fileID: 0}
-  <curConditon>k__BackingField: 0
-  <myTarget>k__BackingField: {fileID: 0}
-  <dropScore>k__BackingField: 0
-  <painAmount>k__BackingField: 0
+  home: {fileID: 0}
+  curConditon: 0
+  myTarget: {fileID: 0}
+  dropScore: 0
+  painAmount: 0
+--- !u!114 &3895575405601656635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794183336213170833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72eff30353ccf944f9f4c3f537110690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <owner>k__BackingField: {fileID: 0}
+  originals: []
+  bulletBank: []
 --- !u!212 &3794183336213170862
 SpriteRenderer:
   m_ObjectHideFlags: 0

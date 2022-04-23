@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3794183336213170832}
   - component: {fileID: -5573895628053143661}
+  - component: {fileID: 4861148951710807431}
   - component: {fileID: 3794183336213170862}
   - component: {fileID: 3794183336213170860}
   - component: {fileID: 3794183336213170861}
+  - component: {fileID: 3620057031825765620}
   m_Layer: 0
   m_Name: GreenEnemy
   m_TagString: Untagged
@@ -53,11 +55,26 @@ MonoBehaviour:
   <myMagazine>k__BackingField: {fileID: 0}
   <entityRenderer>k__BackingField: {fileID: 0}
   <entityAnim>k__BackingField: {fileID: 0}
-  <home>k__BackingField: {fileID: 0}
-  <curConditon>k__BackingField: 0
-  <myTarget>k__BackingField: {fileID: 0}
-  <dropScore>k__BackingField: 0
-  <painAmount>k__BackingField: 0
+  home: {fileID: 0}
+  curConditon: 0
+  myTarget: {fileID: 0}
+  dropScore: 0
+  painAmount: 0
+--- !u!114 &4861148951710807431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794183336213170833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72eff30353ccf944f9f4c3f537110690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <owner>k__BackingField: {fileID: 0}
+  originals: []
+  bulletBank: []
 --- !u!212 &3794183336213170862
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -146,3 +163,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3620057031825765620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794183336213170833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72eff30353ccf944f9f4c3f537110690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <owner>k__BackingField: {fileID: 0}
+  originals: []
+  bulletBank: []

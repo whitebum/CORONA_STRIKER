@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : EnemyCtrl
+public class BossEnemy : EnemyCtrl
 {
 
     protected override IEnumerator AttackEnemy()
