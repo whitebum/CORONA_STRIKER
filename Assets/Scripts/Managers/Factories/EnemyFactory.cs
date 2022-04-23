@@ -14,8 +14,6 @@ public sealed class EnemyFactory : MonoBehaviour
 {
     #region Enemy Factory's Managed Datas
     [field: Header("Enemy Factory's Managed Datas")]
-    [field: SerializeField] public GameScene owner { get; private set; } = null;
-
     [SerializeField] private List<EnemyCtrl> originals = null;
     [SerializeField] private List<EnemyCtrl> enemyBank = null;
     #endregion
@@ -23,10 +21,8 @@ public sealed class EnemyFactory : MonoBehaviour
     #region Unity Message
     private void Awake()
     {
-        owner = GetComponent<GameScene>();
-
-        originals   = new List<EnemyCtrl>(Resources.LoadAll<EnemyCtrl>(""));
         enemyBank   = new List<EnemyCtrl>();
+        originals   = new List<EnemyCtrl>(Resources.LoadAll<EnemyCtrl>(""));
 
         foreach (var original in originals)
         {
