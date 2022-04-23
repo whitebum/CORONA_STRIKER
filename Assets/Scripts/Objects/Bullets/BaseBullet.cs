@@ -6,9 +6,9 @@ public class BaseBullet : MonoBehaviour
 {
     #region Bullet's Base Datas
     [field: Header("Bullet's Base Datas")]
-    [field: SerializeField] protected BulletFactory   home          { get; private set; } = null;
+    [field: SerializeField] public BulletFactory home = null;
 
-    [property: SerializeField] public float moveSpeed { get => home.owner.bulletSpeed; }
+    public float moveSpeed { get => home.owner.bulletSpeed; }
     #endregion
 
     #region Unity Messages
