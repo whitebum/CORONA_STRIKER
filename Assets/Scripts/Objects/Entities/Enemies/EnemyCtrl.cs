@@ -48,9 +48,7 @@ public abstract class EnemyCtrl : BaseEntity
     {
         if (collision.tag == "PlayerBullet")
         {
-            var damage = collision.GetComponent<BaseBullet>().damage;
-
-            StartCoroutine(OnDamagedEntity(damage));
+            StartCoroutine(OnDamagedEntity(1.0f));
         }
     }
     #endregion
@@ -61,6 +59,8 @@ public abstract class EnemyCtrl : BaseEntity
         tag = "Enemy";
 
         SetEnemyDatas();
+
+        myMagazine = GetComponent<BulletFactory>();
     }
 
     protected override void OnEnabledEntity()

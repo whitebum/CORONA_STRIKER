@@ -8,7 +8,6 @@ public abstract class BaseEntity : MonoBehaviour
     [field: Header("Entity's Base Datas")]
     [field: SerializeField] public float        entityHP        { get; protected set; } = 0.0f;
     [field: SerializeField] public float        moveSpeed       { get; protected set; } = 0.0f;
-    [field: SerializeField] public float        ATK             { get; protected set; } = 0.0f;
     [field: SerializeField] public float        bulletSpeed     { get; protected set; } = 0.0f;
     [field: SerializeField] public BaseBullet[] myBullets       { get; protected set; } = null;
     

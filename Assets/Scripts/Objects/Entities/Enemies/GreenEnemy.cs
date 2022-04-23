@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenEnemy : EnemyCtrl
+public sealed class GreenEnemy : EnemyCtrl
 {
+    protected override void SetEnemyDatas()
+    {
+        entityHP    = 10.0f;
+        moveSpeed   = 2.0f;
+        bulletSpeed = 30.0f;
+
+        myBullets = Resources.LoadAll<EnemyBullet>("Prefabs/Bullets/Enemy/GreenBullet");
+    }
 
     protected override IEnumerator AttackEnemy()
     {
@@ -14,11 +22,4 @@ public class GreenEnemy : EnemyCtrl
     {
         //transform.Translate(moveSpeed *  * Time.deltaTime);
     }
-
-    protected override void SetEnemyDatas()
-    {
-        moveSpeed = 2.0f;
-
-    }
-
 }
