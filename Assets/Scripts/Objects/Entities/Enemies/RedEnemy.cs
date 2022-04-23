@@ -15,11 +15,14 @@ public sealed class RedEnemy : EnemyCtrl
 
     protected override IEnumerator AttackEnemy()
     {
+
+
+
         yield return null;
     }
 
     protected override void MoveEmemy()
     {
-        transform.Translate(moveSpeed * Vector3.down * Time.deltaTime);
+        transform.Translate(moveSpeed * Vector2.down * Time.deltaTime);
     }
 }

@@ -11,7 +11,7 @@ public class YellowEnemy : EnemyCtrl
 
     protected override void MoveEmemy()
     {
-        transform.Translate(moveSpeed * new Vector2(Random.Range(-3, 3),-1.0f) * Time.deltaTime);
+        transform.Translate(moveSpeed * Vector2.down * Time.deltaTime);
     }
 
     protected override void SetEnemyDatas()
