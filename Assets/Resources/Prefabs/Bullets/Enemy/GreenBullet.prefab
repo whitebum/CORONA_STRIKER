@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -1773521911100998784}
   - component: {fileID: -46007809678931719}
   - component: {fileID: 4574039717206635258}
+  - component: {fileID: 3350851540195470001}
   m_Layer: 7
   m_Name: GreenBullet
   m_TagString: EnemyBullet
@@ -121,3 +122,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &3350851540195470001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660599968070833896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7aa9f9feffa40468a6fabfb1677aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  home: {fileID: 0}
+  <myTarget>k__BackingField: {fileID: 0}
+  <checkPoints>k__BackingField:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  <maxMoveTime>k__BackingField: 0
+  <curMoveTime>k__BackingField: 0

@@ -15,7 +15,8 @@ public sealed class RedEnemy : EnemyCtrl
 
     protected override IEnumerator AttackEnemy()
     {
-        var newBullet = myMagazine.GetBullet(true, transform.position, 1.0f, Quaternion.identity);
+        var newBullet       = myMagazine.GetBullet(true, transform.position, 1.0f, Quaternion.identity) as BaseBazierBullet;
+        newBullet.myTarget  = myTarget;
         yield return new WaitForSeconds(1.0f);
         StartCoroutine("AttackEnemy");
     }
