@@ -86,8 +86,8 @@ public abstract class EnemyCtrl : BaseEntity
         {
             curConditon = ConditionType.DEAD;
 
-            entityAnims[1].Play();
-            yield return new WaitForSeconds(entityAnims[1].clip.length);
+            entityAnim.SetTrigger("Enemy Dead");
+            yield return new WaitForSeconds(entityAnim.GetCurrentAnimatorStateInfo(0).length);
 
             gameObject.SetActive(false);
         }

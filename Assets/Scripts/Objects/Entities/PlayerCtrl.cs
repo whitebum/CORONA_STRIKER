@@ -30,16 +30,20 @@ public sealed class PlayerCtrl : BaseEntity
     {
         tag = "Player";
 
-        entityHP = 5.0f;
-        moveSpeed = 10.0f;
-        ATK = 1.0f;
+        entityHP    = maxPlayerHP;
+        moveSpeed   = 10.0f;
+        ATK         = 1.0f;
+        bulletSpeed = 30.0f;
 
-        myMagazine = TryGetComponent(out BulletFactory bf) ? GetComponent<BulletFactory>() : gameObject.AddComponent<BulletFactory>();
+        myBullets   = Resources.LoadAll<PlayerBullet>("");
+        myMagazine  = GetComponent<BulletFactory>();
+
+        entityAnim.SetFloat("Player HP", entityHP);
     }
 
     protected override void OnEnabledEntity()
     {
-        return;
+        
     }
 
     protected override void OnUpdatedEntity()

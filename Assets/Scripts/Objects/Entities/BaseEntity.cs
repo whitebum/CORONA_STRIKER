@@ -15,7 +15,7 @@ public abstract class BaseEntity : MonoBehaviour
     [field: Space(5.0f)]
     [field: SerializeField] protected BulletFactory     myMagazine      { get; set; } = null;
     [field: SerializeField] protected SpriteRenderer    entityRenderer  { get; set; } = null;
-    [field: SerializeField] protected Animation[]       entityAnims     { get; set; } = null;
+    [field: SerializeField] protected Animator          entityAnim     { get; set; } = null;
     #endregion
 
     #region Unity Messages
@@ -23,6 +23,7 @@ public abstract class BaseEntity : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer("Entity");
 
+        entityAnim      = GetComponent<Animator>();
         entityRenderer  = GetComponent<SpriteRenderer>();
 
         SetEntityDatas();
