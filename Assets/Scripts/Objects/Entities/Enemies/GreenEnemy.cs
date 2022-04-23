@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedEnemy : EnemyCtrl
+public class GreenEnemy : EnemyCtrl
 {
+
     protected override IEnumerator AttackEnemy()
     {
         yield return null;
@@ -11,11 +12,13 @@ public class RedEnemy : EnemyCtrl
 
     protected override void MoveEmemy()
     {
-        transform.Translate(moveSpeed * Vector3.down * Time.deltaTime);
+        //transform.Translate(moveSpeed *  * Time.deltaTime);
     }
 
     protected override void SetEnemyDatas()
     {
-        moveSpeed = 1.0f;
+        moveSpeed = 2.0f;
+
     }
+
 }
