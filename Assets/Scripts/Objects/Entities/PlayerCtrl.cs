@@ -58,7 +58,7 @@ public sealed class PlayerCtrl : BaseEntity
         moveSpeed   = 10.0f;
         bulletSpeed = 30.0f;
 
-        myBullets   = Resources.LoadAll<PlayerBullet>("");
+        myBullets   = Resources.LoadAll<PlayerBullet>("Prefabs/Bullets/Player");
         myMagazine  = GetComponent<BulletFactory>();
 
         entityAnim.SetFloat("Player HP", entityHP);
@@ -157,8 +157,7 @@ public sealed class PlayerCtrl : BaseEntity
 
             if (curAttackTime >= maxAttackTime)
             {
-                //var newBullet = myMagazine.GetObject(transform.position, 3, Quaternion.identity);
-                Debug.Log("ÃÑ¾Ë ¹ß»ç");
+                var newBullet = myMagazine.GetBullet(false, transform.position, 1, Quaternion.identity);
                 curAttackTime = 0.0f;
             }
         }

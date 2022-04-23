@@ -5,40 +5,16 @@ using UnityEngine;
 public abstract class BaseFactory<T> : MonoBehaviour where T : MonoBehaviour
 {
     #region Base Factory's Base Datas
-    [field: Header("Base Factory's Base Datas")]
-    [field: SerializeField] protected T[] originals { get; set; } = null;
-    [field: SerializeField] protected byte initCount { get; set; } = 0;
-    [field: SerializeField] private List<GameObject> objectBank { get; set; } = null;
-    #endregion
-
-    #region Unity Messages
-    private void Awake()
-    {
-        SetFactoryData();
-
-        foreach (var original in originals)
-        {
-            var storage = new GameObject($"{original.GetType()} Storage").transform;
-
-            storage.transform.SetParent(transform);
-
-            for (byte count2 = 0; count2 < initCount; ++count2)
-            {
-                objectBank.Add(CreateObject(original, storage));
-            }
-        }
-    }
+    [Header("Base Factory's Base Datas")]
+    [SerializeField] protected T[] originals = null;
+    [SerializeField] protected byte initCount = 0;
+    [SerializeField] protected List<GameObject> objectBank = null;
     #endregion
 
     #region Base Factory's Base Methods
-    protected abstract void SetFactoryData();
-
-    private GameObject CreateObject(T original, Transform storage)
+    protected virtual GameObject CreateObject(T original)
     {
         var newObj = Instantiate(original) as GameObject;
-
-        newObj.transform.SetParent(storage);
-        newObj.gameObject.SetActive(false);
 
         return newObj;
     }
