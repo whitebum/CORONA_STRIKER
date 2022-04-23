@@ -17,12 +17,38 @@ public sealed class PlayerCtrl : BaseEntity
     private const float maxPlayerHP = 5.0f;
     private const byte  maxPlayerLv = 5;
 
-    [field: Header("")]
+    [field: Header("Player's Expension Datas")]
     [field: SerializeField] public ConditionType    curCondition    { get; private set; } = ConditionType.READY;
     [field: SerializeField] public byte             playerLv        { get; private set; } = 1;
 
     [field: SerializeField] private float curAttackTime { get; set; } = 0.0f;
     [field: SerializeField] private float maxAttackTime { get; set; } = 0.0f;
+    #endregion
+
+    #region
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "Enemy":
+                {
+                    var damage = collision.GetComponent<BaseEntity>().ATK / 2.0f;
+                    StartCoroutine(OnDamagedEntity(damage));
+                }
+                break;
+            case "EnemyBullet":
+                {
+                    var damage = collision.GetComponent<BaseBullet>().damage;
+                    StartCoroutine(OnDamagedEntity(damage));
+                }
+                break;
+            case "Item":
+                {
+
+                }
+                break;
+        }
+    }
     #endregion
 
     #region
@@ -48,6 +74,11 @@ public sealed class PlayerCtrl : BaseEntity
 
     protected override void OnUpdatedEntity()
     {
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            StartCoroutine(OnDamagedEntity(0.5f));
+        }
+
         PlayerMove();
         PlayerAttack();
     }
@@ -59,7 +90,40 @@ public sealed class PlayerCtrl : BaseEntity
 
     protected override IEnumerator OnDamagedEntity(float damage)
     {
-        yield break;
+        if (curCondition != ConditionType.READY ||
+            curCondition != ConditionType.DAMAGED || 
+            curCondition != ConditionType.DEAD)
+        {
+            entityHP -= damage;
+
+            if (entityHP <= 0.0f)
+            {
+                curCondition = ConditionType.DEAD;
+
+                entityAnim.SetTrigger("Player Dead");
+
+                yield return new WaitForSeconds(entityAnim.GetCurrentAnimatorStateInfo(0).length);
+
+                gameObject.SetActive(false);
+            }
+
+            else
+            {
+                SoundManager.GetInstance().PlaySFX("SFX_PlayerDamaged");
+
+                var r = entityRenderer.color.r;
+                var g = entityRenderer.color.g;
+                var b = entityRenderer.color.b;
+
+                for (byte count = 0; count < 4; ++count)
+                {
+                    entityRenderer.color = new Color(r, g, b, 0.5f);
+                    yield return new WaitForSeconds(0.2f);
+                    entityRenderer.color = new Color(r, g, b, 1.0f);
+                    yield return new WaitForSeconds(0.2f);
+                }
+            }
+        }
     }
     #endregion
 
