@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6621173148536992101}
-  - component: {fileID: 6340449529619796871}
-  - component: {fileID: -1456495062499374560}
-  - component: {fileID: 8755097929754200808}
-  - component: {fileID: -921246344138604893}
+  - component: {fileID: -4539868367935749900}
+  - component: {fileID: -1773521911100998784}
+  - component: {fileID: -46007809678931719}
+  - component: {fileID: 4574039717206635258}
   m_Layer: 7
-  m_Name: RedBullet
+  m_Name: GreenBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6340449529619796871
+--- !u!114 &-4539868367935749900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,19 +43,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1660599968070833896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b7aa9f9feffa40468a6fabfb1677aa8, type: 3}
+  m_Script: {fileID: 11500000, guid: f75f89388d5d90d4bab89d78653cc3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   home: {fileID: 0}
-  <myTarget>k__BackingField: {fileID: 0}
-  <checkPoints>k__BackingField:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  <maxMoveTime>k__BackingField: 0
-  <curMoveTime>k__BackingField: 0
---- !u!212 &-1456495062499374560
+--- !u!212 &-1773521911100998784
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,18 +87,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b8da42787c4fcd943b77b507a51c3505, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebd31ce875f081842add156e79023ad2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.22, y: 1.26}
+  m_Size: {x: 1.68, y: 1.71}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &8755097929754200808
+--- !u!50 &-46007809678931719
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -127,7 +119,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &-921246344138604893
+--- !u!70 &4574039717206635258
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

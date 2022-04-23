@@ -10,7 +10,7 @@ public sealed class GreenEnemy : EnemyCtrl
         moveSpeed   = 2.0f;
         bulletSpeed = 30.0f;
 
-        myBullets = Resources.LoadAll<EnemyBullet>("Prefabs/Bullets/Enemy/GreenBullet");
+        myBullets = Resources.LoadAll<BaseBullet>("Prefabs/Bullets/Enemies/YellowBullet");
     }
 
     protected override IEnumerator AttackEnemy()
@@ -20,6 +20,6 @@ public sealed class GreenEnemy : EnemyCtrl
 
     protected override void MoveEmemy()
     {
-        transform.Translate( 3.0f * new Vector2(Mathf.Sin(moveSpeed * Time.time),-1) * Time.deltaTime);
+        transform.Translate(3.0f * new Vector2(Mathf.Sin(moveSpeed * Time.time), -1) * Time.deltaTime);
     }
 }
