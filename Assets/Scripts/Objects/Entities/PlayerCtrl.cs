@@ -157,7 +157,7 @@ public sealed class PlayerCtrl : BaseEntity
 
             if (curAttackTime >= maxAttackTime)
             {
-                var newBullet = myMagazine.GetBullet(false, transform.position, 1, Quaternion.identity);
+                var newBullet = myMagazine.GetBullet(BulletType.NORMAL, transform.position, 1, Quaternion.identity);
                 curAttackTime = 0.0f;
             }
         }

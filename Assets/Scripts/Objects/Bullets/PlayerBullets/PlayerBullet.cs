@@ -8,7 +8,7 @@ public sealed class PlayerBullet : BaseBullet
     {
         if (collision.tag == "Enemy" || collision.tag == "WhiteCell")
         {
-            home.ReturnObject(this);
+            home.ReturnBullet(this);
         }
     }
 }

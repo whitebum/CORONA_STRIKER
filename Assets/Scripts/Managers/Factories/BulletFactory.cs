@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BulletType
+{
+    NORMAL,
+    BAZIER,
+}
+
 public sealed class BulletFactory : MonoBehaviour
 {
     #region Bullet Factory's Managed Datas
@@ -44,20 +50,18 @@ public sealed class BulletFactory : MonoBehaviour
     #endregion
 
     #region Bullet Factory's Methods
-    public BaseBullet GetBullet(bool isBazier, Vector3 spawnPos, float scale, Quaternion rotate)
+    public BaseBullet GetBullet(BulletType type, Vector3 spawnPos, float scale, Quaternion rotate)
     {
-        var nowBullet = isBazier ? bulletBank.Find((b) => b is BaseBazierBullet) : bulletBank.Find((b) => b is BaseBullet);
+        var nowBullet = GetBulletInBank(type);
 
-        if (bulletBank.Count <= 0 || !nowBullet)
+        if (!nowBullet)
         {
-            var newBullet = Instantiate(originals.Find((b) => b == nowBullet));
+            nowBullet = GetBulletInOriginal(type);
 
-            newBullet.home = this;
-            newBullet.transform.position    = spawnPos;
-            newBullet.transform.localScale *= scale;
-            newBullet.transform.rotation    = rotate;
-
-            return newBullet;
+            nowBullet.home = this;
+            nowBullet.transform.position    = spawnPos;
+            nowBullet.transform.localScale *= scale;
+            nowBullet.transform.rotation    = rotate;
         }
 
         else
@@ -69,12 +73,12 @@ public sealed class BulletFactory : MonoBehaviour
             nowBullet.transform.localScale *= scale;
             nowBullet.transform.rotation    = rotate;
             nowBullet.gameObject.SetActive(true);
-
-            return nowBullet;
         }
+
+        return nowBullet;
     }
 
-    public void ReturnObject(BaseBullet usedBullet)
+    public void ReturnBullet(BaseBullet usedBullet)
     {
         usedBullet.transform.SetParent(transform.Find($"{usedBullet.name} Storage"));
         usedBullet.transform.position   = transform.position;
@@ -84,5 +88,19 @@ public sealed class BulletFactory : MonoBehaviour
 
         bulletBank.Add(usedBullet);
     }
+
+    private BaseBullet GetBulletInOriginal(BulletType type) => type switch
+    {
+        BulletType.NORMAL => originals.Find((bullet) => bullet is BaseBullet),
+        BulletType.BAZIER => originals.Find((bullet) => bullet is BaseBazierBullet),
+        _ => null,
+    };
+
+    private BaseBullet GetBulletInBank(BulletType type) => type switch
+    {
+        BulletType.NORMAL => bulletBank.Find((bullet) => bullet is BaseBullet),
+        BulletType.BAZIER => bulletBank.Find((bullet) => bullet is BaseBazierBullet),
+        _ => null,
+    };
     #endregion
 }

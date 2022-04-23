@@ -9,7 +9,7 @@ public sealed class EnemyBazierBullet : BaseBazierBullet
     {
         if (collision.tag == "Player" || collision.tag == "RedCell")
         {
-            home.ReturnObject(this);
+            home.ReturnBullet(this);
         }
     }
 }
