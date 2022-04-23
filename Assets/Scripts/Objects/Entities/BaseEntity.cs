@@ -15,14 +15,16 @@ public abstract class BaseEntity : MonoBehaviour
     [field: Space(5.0f)]
     [field: SerializeField] protected BulletFactory     myMagazine      { get; set; } = null;
     [field: SerializeField] protected SpriteRenderer    entityRenderer  { get; set; } = null;
-    [field: SerializeField] protected Animator          entityAnim      { get; set; } = null;
+    [field: SerializeField] protected Animator          entityAnim     { get; set; } = null;
     #endregion
 
     #region Unity Messages
     private void Awake()
     {
-        entityRenderer  = GetComponent<SpriteRenderer>();
+        gameObject.layer = LayerMask.NameToLayer("Entity");
+
         entityAnim      = GetComponent<Animator>();
+        entityRenderer  = GetComponent<SpriteRenderer>();
 
         SetEntityDatas();
     }
@@ -48,5 +50,6 @@ public abstract class BaseEntity : MonoBehaviour
     protected abstract void OnEnabledEntity();
     protected abstract void OnUpdatedEntity();
     protected abstract void OnDisabledEntity();
+    protected abstract IEnumerator OnDamagedEntity(float damage);
     #endregion
 }

@@ -28,16 +28,22 @@ public sealed class PlayerCtrl : BaseEntity
     #region
     protected override void SetEntityDatas()
     {
-        entityHP = 5.0f;
-        moveSpeed = 10.0f;
-        ATK = 1.0f;
+        tag = "Player";
 
-        myMagazine = TryGetComponent(out BulletFactory bf) ? GetComponent<BulletFactory>() : gameObject.AddComponent<BulletFactory>();
+        entityHP    = maxPlayerHP;
+        moveSpeed   = 10.0f;
+        ATK         = 1.0f;
+        bulletSpeed = 30.0f;
+
+        myBullets   = Resources.LoadAll<PlayerBullet>("");
+        myMagazine  = GetComponent<BulletFactory>();
+
+        entityAnim.SetFloat("Player HP", entityHP);
     }
 
     protected override void OnEnabledEntity()
     {
-        return;
+        
     }
 
     protected override void OnUpdatedEntity()
@@ -50,9 +56,24 @@ public sealed class PlayerCtrl : BaseEntity
     {
         curCondition = ConditionType.DEAD;
     }
+
+    protected override IEnumerator OnDamagedEntity(float damage)
+    {
+        yield break;
+    }
     #endregion
 
-    #region
+    #region 
+    public void SetHP(float value)
+    {
+        entityHP = value < maxPlayerHP ? value : maxPlayerHP;
+    }
+
+    public void SetLv(byte value)
+    {
+        playerLv = value < maxPlayerLv ? value : maxPlayerLv;
+    }
+
     private void PlayerMove()
     {
         var horizontal  = Input.GetAxisRaw("Horizontal");
@@ -79,18 +100,6 @@ public sealed class PlayerCtrl : BaseEntity
         {
             curAttackTime = 0.0f;
         }
-    }
-
-    public void GetHP(float value)
-    {
-        SoundManager.GetInstance().PlaySFX("SFX_PlayerHealed");
-        entityHP = value < maxPlayerHP ? value : maxPlayerHP;
-    }
-
-    public void GetLv(byte value)
-    {
-        SoundManager.GetInstance().PlaySFX("SFX_PlayerLvUp");
-        playerLv = value < maxPlayerLv ? value : maxPlayerLv;
     }
     #endregion
 }

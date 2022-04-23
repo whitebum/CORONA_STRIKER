@@ -43,11 +43,23 @@ public abstract class EnemyCtrl : BaseEntity
             gameObject.SetActive(false);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "PlayerBullet")
+        {
+            var damage = collision.GetComponent<BaseBullet>().damage;
+
+            StartCoroutine(OnDamagedEntity(damage));
+        }
+    }
     #endregion
 
     #region Enemy's Overrided Methods
     protected override void SetEntityDatas()
     {
+        tag = "Enemy";
+
         SetEnemyDatas();
     }
 
@@ -66,7 +78,7 @@ public abstract class EnemyCtrl : BaseEntity
         home.ReturnObject(this);
     }
 
-    protected virtual IEnumerator OnDamagedEnemy(float damage)
+    protected override IEnumerator OnDamagedEntity(float damage)
     {
         entityHP -= damage;
 
@@ -74,9 +86,8 @@ public abstract class EnemyCtrl : BaseEntity
         {
             curConditon = ConditionType.DEAD;
 
+            entityAnim.SetTrigger("Enemy Dead");
             yield return new WaitForSeconds(entityAnim.GetCurrentAnimatorStateInfo(0).length);
-
-            // 드롭 스코어
 
             gameObject.SetActive(false);
         }
@@ -99,6 +110,6 @@ public abstract class EnemyCtrl : BaseEntity
     #region Enemy's Base Methods
     protected abstract void SetEnemyDatas();
     protected abstract void MoveEmemy();
-    protected abstract IEnumerator  AttackEnemy();
+    protected abstract IEnumerator AttackEnemy();
     #endregion
 }
