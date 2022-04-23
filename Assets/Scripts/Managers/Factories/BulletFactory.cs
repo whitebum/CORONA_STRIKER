@@ -78,7 +78,7 @@ public sealed class BulletFactory : MonoBehaviour
         return nowBullet;
     }
 
-    public void ReturnObject(BaseBullet usedBullet)
+    public void ReturnBullet(BaseBullet usedBullet)
     {
         usedBullet.transform.SetParent(transform.Find($"{usedBullet.name} Storage"));
         usedBullet.transform.position   = transform.position;

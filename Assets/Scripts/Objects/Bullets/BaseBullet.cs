@@ -19,7 +19,7 @@ public class BaseBullet : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        home.ReturnObject(this);
+        home.ReturnBullet(this);
     }
     #endregion
 

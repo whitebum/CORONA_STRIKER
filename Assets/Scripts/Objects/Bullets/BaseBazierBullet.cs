@@ -40,7 +40,7 @@ public abstract class BaseBazierBullet : BaseBullet
     {
         if (curMoveTime > maxMoveTime)
         {
-            home.ReturnObject(this);
+            home.ReturnBullet(this);
         }
 
         curMoveTime += Time.deltaTime * moveSpeed;
