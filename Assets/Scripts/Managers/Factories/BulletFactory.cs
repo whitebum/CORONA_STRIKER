@@ -28,7 +28,7 @@ public sealed class BulletFactory : MonoBehaviour
 
         foreach (var original in originals)
         {
-            var storage = new GameObject($"{original.name} Storage").transform;
+            var storage = new GameObject($"{original.name}'s Storage").transform;
 
             storage.transform.SetParent(transform);
 
@@ -80,7 +80,7 @@ public sealed class BulletFactory : MonoBehaviour
 
     public void ReturnBullet(BaseBullet usedBullet)
     {
-        usedBullet.transform.SetParent(transform.Find($"{usedBullet.name} Storage"));
+        usedBullet.transform.SetParent(transform.Find($"{usedBullet.name}'s Storage"));
         usedBullet.transform.position   = transform.position;
         usedBullet.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         usedBullet.transform.rotation   = Quaternion.identity;

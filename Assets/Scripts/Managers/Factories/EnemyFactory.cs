@@ -26,7 +26,7 @@ public sealed class EnemyFactory : MonoBehaviour
 
         foreach (var original in originals)
         {
-            var storage = new GameObject($"{original.name} Storage").transform;
+            var storage = new GameObject($"{original.name}'s Storage").transform;
 
             storage.transform.SetParent(transform);
 
