@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3794183336213170832}
+  - component: {fileID: 2621016396460746837}
+  - component: {fileID: 7898121050941429448}
   - component: {fileID: 3794183336213170862}
   - component: {fileID: 3794183336213170860}
   - component: {fileID: 3794183336213170861}
@@ -33,6 +35,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2621016396460746837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794183336213170833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc7d24a89f7e3b44a813a338b37a037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <entityHP>k__BackingField: 0
+  <moveSpeed>k__BackingField: 0
+  <bulletSpeed>k__BackingField: 0
+  <myBullets>k__BackingField: []
+  <myMagazine>k__BackingField: {fileID: 0}
+  <entityRenderer>k__BackingField: {fileID: 0}
+  <entityAnim>k__BackingField: {fileID: 0}
+  home: {fileID: 0}
+  curConditon: 0
+  myTarget: {fileID: 0}
+  dropScore: 0
+  painAmount: 0
+--- !u!114 &7898121050941429448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794183336213170833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72eff30353ccf944f9f4c3f537110690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <owner>k__BackingField: {fileID: 0}
+  originals: []
+  bulletBank: []
 --- !u!212 &3794183336213170862
 SpriteRenderer:
   m_ObjectHideFlags: 0

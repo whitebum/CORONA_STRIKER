@@ -87,18 +87,18 @@ public sealed class EnemyFactory : MonoBehaviour
     private EnemyCtrl GetEnemyInBank(EnemyType type) => type switch
     {
         EnemyType.GREEN => enemyBank.Find((enemy) => enemy is GreenEnemy),
-        EnemyType.YELLOW => enemyBank.Find((enemy) => enemy is /*YellowEnemy*/GreenEnemy),
+        EnemyType.YELLOW => enemyBank.Find((enemy) => enemy is YellowEnemy),
         EnemyType.RED => enemyBank.Find((enemy) => enemy is RedEnemy),
-        EnemyType.BOSS => enemyBank.Find((enemy) => enemy is /*BossEnemy*/RedEnemy),
+        EnemyType.BOSS => enemyBank.Find((enemy) => enemy is BossEnemy),
         _ => null,
     };
 
     private EnemyCtrl GetEnemyInOriginals(EnemyType type) => type switch
     {
         EnemyType.GREEN => originals.Find((enemy) => enemy is GreenEnemy),
-        EnemyType.YELLOW => originals.Find((enemy) => enemy is /*YellowEnemy*/GreenEnemy),
+        EnemyType.YELLOW => originals.Find((enemy) => enemy is YellowEnemy),
         EnemyType.RED => originals.Find((enemy) => enemy is RedEnemy),
-        EnemyType.BOSS => originals.Find((enemy) => enemy is/*BossEnemy*/RedEnemy),
+        EnemyType.BOSS => originals.Find((enemy) => enemy is BossEnemy),
         _ => null,
     };
     #endregion
