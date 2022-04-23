@@ -109,7 +109,7 @@ public sealed class PlayerCtrl : BaseEntity
 
             else
             {
-                SoundManager.GetInstance().PlaySFX("SFX_PlayerDamaged");
+                //SoundManager.GetInstance().PlaySFX("SFX_PlayerDamaged");
 
                 var r = entityRenderer.color.r;
                 var g = entityRenderer.color.g;

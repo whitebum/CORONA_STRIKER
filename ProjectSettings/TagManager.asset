@@ -6,6 +6,12 @@ TagManager:
   tags:
   - UI
   - Background
+  - Enemy
+  - PlayerBullet
+  - EnemyBullet
+  - RedCell
+  - WhiteCell
+  - Item
   layers:
   - Default
   - TransparentFX
