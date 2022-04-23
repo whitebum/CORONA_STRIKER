@@ -22,8 +22,8 @@ public class Boss : EnemyCtrl
 
     private IEnumerator BossIntroCoroutine(Transform transform, Vector3 position, float timeToMove)
     {
-        var currentPos = transform.position;
-        var t = 0f;
+        var currentPos  = transform.position;
+        var t           = 0f;
         while (t < 1)
         {
             t += Time.deltaTime / timeToMove;
