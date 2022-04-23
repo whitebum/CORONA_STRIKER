@@ -14,8 +14,8 @@ public abstract class BaseBazierBullet : BaseBullet
     [field: SerializeField] private float       curMoveTime { get; set; } = 0.0f;
     #endregion
 
-    #region
-    private void Awake()
+    #region Unity Message
+    private void Start()
     {
         maxMoveTime = Random.Range(0.8f, 1.0f);
 

@@ -12,12 +12,13 @@ public abstract class EnemyCtrl : BaseEntity
     }
 
     #region Enemy's Expension Datas
-    [field: Header("Enemy's Expension Datas")]
-    [field: SerializeField] protected EnemyFactory      home        { get; set; } = null;
-    [field: SerializeField] protected ConditionType     curConditon { get; set; } = ConditionType.READY;
-    [field: SerializeField] protected Transform         myTarget    { get; set; } = null;
-    [field: SerializeField] protected uint              dropScore   { get; set; } = 0;
-    [field: SerializeField] protected float             painAmount  { get; set; } = 0.0f;
+    [Header("Enemy's Expension Datas")]
+    [SerializeField] public EnemyFactory home = null;
+
+    [SerializeField] protected ConditionType    curConditon = ConditionType.READY;
+    [SerializeField] protected Transform        myTarget    = null;
+    [SerializeField] protected uint             dropScore   = 0;
+    [SerializeField] protected float            painAmount  = 0.0f;
     #endregion
 
     #region Unity Messages
@@ -75,7 +76,7 @@ public abstract class EnemyCtrl : BaseEntity
 
     protected override void OnDisabledEntity()
     {
-        //home.ReturnObject(this);
+        home.ReturnEnemy(this);
     }
 
     protected override IEnumerator OnDamagedEntity(float damage)

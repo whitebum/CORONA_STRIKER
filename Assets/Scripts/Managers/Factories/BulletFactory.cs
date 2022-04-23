@@ -4,12 +4,15 @@ using UnityEngine;
 
 public sealed class BulletFactory : MonoBehaviour
 {
-    [field: Header("Bullet Factory's Expension Data")]
-    [SerializeField] private    List<BaseBullet> originals  = null;
-    [SerializeField] protected  List<BaseBullet> bulletBank = null;
-
+    #region Bullet Factory's Managed Datas
+    [field: Header("Bullet Factory's Managed Datas")]
     [field: SerializeField] public BaseEntity owner { get; private set; } =  null;
 
+    [SerializeField] private List<BaseBullet> originals     = null;
+    [SerializeField] private List<BaseBullet> bulletBank    = null;
+    #endregion
+
+    #region Unity Message
     private void Awake()
     {
         owner       = GetComponent<BaseEntity>();
@@ -27,6 +30,7 @@ public sealed class BulletFactory : MonoBehaviour
             {
                 var newBullet = Instantiate(original);
 
+                newBullet.name = original.name;
                 newBullet.home = this;
                 newBullet.transform.SetParent(storage);
                 newBullet.transform.position = transform.position;
@@ -37,7 +41,9 @@ public sealed class BulletFactory : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Bullet Factory's Methods
     public BaseBullet GetBullet(bool isBazier, Vector3 spawnPos, float scale, Quaternion rotate)
     {
         var nowBullet = isBazier ? bulletBank.Find((b) => b is BaseBazierBullet) : bulletBank.Find((b) => b is BaseBullet);
@@ -70,7 +76,7 @@ public sealed class BulletFactory : MonoBehaviour
 
     public void ReturnObject(BaseBullet usedBullet)
     {
-        usedBullet.transform.SetParent(transform);
+        usedBullet.transform.SetParent(transform.Find($"{usedBullet.name} Storage"));
         usedBullet.transform.position   = transform.position;
         usedBullet.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         usedBullet.transform.rotation   = Quaternion.identity;
@@ -78,4 +84,5 @@ public sealed class BulletFactory : MonoBehaviour
 
         bulletBank.Add(usedBullet);
     }
+    #endregion
 }

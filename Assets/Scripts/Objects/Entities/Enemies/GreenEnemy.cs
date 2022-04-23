@@ -15,7 +15,17 @@ public sealed class GreenEnemy : EnemyCtrl
 
     protected override IEnumerator AttackEnemy()
     {
-        yield return null;
+        for (byte count = 0; count < 6; ++count)
+        {
+            var newBullet       = myMagazine.GetBullet(true, transform.position, 1.0f, Quaternion.identity) as BaseBazierBullet;
+            newBullet.myTarget  = myTarget;
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        yield return new WaitForSeconds(1.0f);
+
+        StartCoroutine("AttackEnemy");
     }
 
     protected override void MoveEmemy()
