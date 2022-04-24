@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum EnemyType
 {
-    RED,
-    YELLOW,
-    GREEN,
-    BOSS,
+    VIRUS,
+    CENCER,
+    GERM,
+    CORONA,
 }
 
 public sealed class EnemyFactory : MonoBehaviour
@@ -86,19 +86,19 @@ public sealed class EnemyFactory : MonoBehaviour
 
     private EnemyCtrl GetEnemyInOriginals(EnemyType type) => type switch
     {
-        EnemyType.GREEN => originals.Find((enemy) => enemy is TypeVirus),
-        EnemyType.YELLOW => originals.Find((enemy) => enemy is TypeGerm),
-        EnemyType.RED => originals.Find((enemy) => enemy is TypeCencer),
-        EnemyType.BOSS => originals.Find((enemy) => enemy is TypeCorona),
+        EnemyType.VIRUS => originals.Find((enemy) => enemy is TypeVirus),
+        EnemyType.CENCER => originals.Find((enemy) => enemy is TypeCencer),
+        EnemyType.GERM => originals.Find((enemy) => enemy is TypeGerm),
+        EnemyType.CORONA => originals.Find((enemy) => enemy is TypeCorona),
         _ => null,
     };
 
     private EnemyCtrl GetEnemyInBank(EnemyType type) => type switch
     {
-        EnemyType.GREEN => enemyBank.Find((enemy) => enemy is TypeVirus),
-        EnemyType.YELLOW => enemyBank.Find((enemy) => enemy is TypeGerm),
-        EnemyType.RED => enemyBank.Find((enemy) => enemy is TypeCencer),
-        EnemyType.BOSS => enemyBank.Find((enemy) => enemy is TypeCorona),
+        EnemyType.VIRUS => enemyBank.Find((enemy) => enemy is TypeVirus),
+        EnemyType.CENCER => enemyBank.Find((enemy) => enemy is TypeCencer),
+        EnemyType.GERM => enemyBank.Find((enemy) => enemy is TypeGerm),
+        EnemyType.CORONA => enemyBank.Find((enemy) => enemy is TypeCorona),
         _ => null,
     };
     #endregion
