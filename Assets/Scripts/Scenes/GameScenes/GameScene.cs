@@ -18,14 +18,11 @@ public abstract class GameScene : BaseScene
     [SerializeField] protected bool isBossAppeared = false;
     [field: SerializeField] public byte killCount { get; set; }
 
-    [field: SerializeField] protected EnemyFactory enemySpawner { get; private set; }
-
     #endregion
 
     #region
     protected override void InitSceneData()
     {
-        enemySpawner = GetComponent<EnemyFactory>() ?? gameObject.AddComponent<EnemyFactory>();
     }
 
     protected override void OnStartedScene()
@@ -86,7 +83,7 @@ public abstract class GameScene : BaseScene
         {
             if (gameTime >= 0.0f || killCount <= 0)
             {
-                enemySpawner.GetEnemy(EnemyType.CORONA, new Vector3(), Quaternion.identity);
+                EnemyFactory.GetInstance().GetEnemy(EnemyType.CORONA, new Vector3(), Quaternion.identity);
                 isBossAppeared = true;
             }
         }

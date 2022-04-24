@@ -13,8 +13,6 @@ public abstract class EnemyCtrl : BaseEntity
 
     #region Enemy's Expension Datas
     [Header("Enemy's Expension Datas")]
-    [SerializeField] public EnemyFactory home = null;
-
     [SerializeField] protected ConditionType    curConditon         = ConditionType.READY;
     [SerializeField] protected Transform        myTarget            = null;
     [SerializeField] protected float            attackIntervalTime  = 0.0f;
@@ -42,15 +40,18 @@ public abstract class EnemyCtrl : BaseEntity
 
             // 고통 게이지 상승
 
-            gameObject.SetActive(false);
+            EnemyFactory.GetInstance().ReturnEnemy(this);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "PlayerBullet")
+        if (curConditon != ConditionType.DEAD)
         {
-            StartCoroutine(OnDamagedEntity(1.0f));
+            if (collision.tag == "PlayerBullet")
+            {
+                StartCoroutine(OnDamagedEntity(1.0f));
+            }
         }
     }
     #endregion
@@ -65,7 +66,7 @@ public abstract class EnemyCtrl : BaseEntity
 
     protected override void OnEnabledEntity()
     {
-        //myTarget = FindObjectOfType<PlayerCtrl>().transform;
+        
     }
 
     protected override void OnUpdatedEntity()
@@ -75,7 +76,7 @@ public abstract class EnemyCtrl : BaseEntity
 
     protected override void OnDisabledEntity()
     {
-        //home.ReturnEnemy(this);
+        EnemyFactory.GetInstance().ReturnEnemy(this);
     }
 
     protected override IEnumerator OnDamagedEntity(float damage)
@@ -87,9 +88,9 @@ public abstract class EnemyCtrl : BaseEntity
             curConditon = ConditionType.DEAD;
 
             entityAnim.SetTrigger("Enemy Dead");
-            yield return new WaitForSeconds(entityAnim.GetCurrentAnimatorStateInfo(0).length);
+            yield return new WaitForSeconds(entityAnim.GetCurrentAnimatorClipInfo(0).Length);
 
-            gameObject.SetActive(false);
+            EnemyFactory.GetInstance().ReturnEnemy(this);
         }
 
         else

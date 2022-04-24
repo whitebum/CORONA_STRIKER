@@ -10,7 +10,7 @@ public enum EnemyType
     CORONA,
 }
 
-public sealed class EnemyFactory : MonoBehaviour
+public sealed class EnemyFactory : BaseManager<EnemyFactory>
 {
     #region Enemy Factory's Managed Datas
     [field: Header("Enemy Factory's Managed Datas")]
@@ -21,21 +21,20 @@ public sealed class EnemyFactory : MonoBehaviour
     #region Unity Message
     private void Awake()
     {
+        originals   = new List<EnemyCtrl>(Resources.LoadAll<EnemyCtrl>("Prefabs/Enemies/Enemies"));
         enemyBank   = new List<EnemyCtrl>();
-        originals   = new List<EnemyCtrl>(Resources.LoadAll<EnemyCtrl>(""));
 
         foreach (var original in originals)
         {
             var storage = new GameObject($"{original.name}'s Storage").transform;
 
-            storage.transform.SetParent(transform);
+            storage.transform.SetParent(GetInstance().gameObject.transform);
 
             for (byte count = 0; count < 30; ++count)
             {
                 var newEnemy = Instantiate(original);
 
                 newEnemy.name = original.name;
-                newEnemy.home = this;
                 newEnemy.transform.SetParent(storage);
                 newEnemy.transform.position = transform.position;
                 newEnemy.transform.rotation = transform.rotation;
@@ -56,7 +55,6 @@ public sealed class EnemyFactory : MonoBehaviour
         {
             nowEnemy = Instantiate(GetEnemyInOriginals(type));
 
-            nowEnemy.home = this;
             nowEnemy.transform.position = spawnPos;
             nowEnemy.transform.rotation = rotate;
         }
@@ -77,8 +75,8 @@ public sealed class EnemyFactory : MonoBehaviour
     public void ReturnEnemy(EnemyCtrl usedEnemy)
     {
         usedEnemy.transform.SetParent(transform.Find($"{usedEnemy.name}'s Storage"));
-        usedEnemy.transform.position    = transform.position;
-        usedEnemy.transform.rotation    = Quaternion.identity;
+        usedEnemy.transform.position = transform.position;
+        usedEnemy.transform.rotation = Quaternion.identity;
         usedEnemy.gameObject.SetActive(false);
 
         enemyBank.Add(usedEnemy);

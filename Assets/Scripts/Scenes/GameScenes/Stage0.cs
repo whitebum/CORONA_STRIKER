@@ -15,7 +15,7 @@ public sealed class Stage0 : GameScene
     {
         for (int i = 0; i < 5; ++i)
         {
-            var newEnemy = enemySpawner.GetEnemy(EnemyType.CENCER, new Vector3(Random.Range(-8.0f, 8.1f), 6, 0), Quaternion.identity);
+            var newEnemy = EnemyFactory.GetInstance().GetEnemy(EnemyType.CENCER, new Vector3(Random.Range(-8.0f, 8.1f), 6, 0), Quaternion.identity);
         }
 
         yield return new WaitForSeconds(2.0f);
@@ -23,12 +23,12 @@ public sealed class Stage0 : GameScene
     }
     private IEnumerator EnemySpawnPattern2()
     {
-        var newGreenEnemy = enemySpawner.GetEnemy(EnemyType.VIRUS, new Vector3(0, 6, 0), Quaternion.identity);
+        var newGreenEnemy = EnemyFactory.GetInstance().GetEnemy(EnemyType.VIRUS, new Vector3(0, 6, 0), Quaternion.identity);
         for (int i = 0; i < 4; ++i)
         {
             for (int j = -5; j < 11; j += 10)
             {
-                var newYellowEnemy = enemySpawner.GetEnemy(EnemyType.GERM, new Vector3(j, 6, 0), Quaternion.identity);
+                var newYellowEnemy = EnemyFactory.GetInstance().GetEnemy(EnemyType.GERM, new Vector3(j, 6, 0), Quaternion.identity);
             }
             yield return new WaitForSeconds(0.4f);
         }
@@ -39,11 +39,11 @@ public sealed class Stage0 : GameScene
     {
         for (int i = -6; i < 7; i += 6)
         {
-            var newEnemy = enemySpawner.GetEnemy(EnemyType.CENCER, new Vector3(i, 6, 0), Quaternion.identity);
+            var newEnemy = EnemyFactory.GetInstance().GetEnemy(EnemyType.CENCER, new Vector3(i, 6, 0), Quaternion.identity);
         }
         for (int i = 0; i < 5; ++i)
         {
-            var newEnemy = enemySpawner.GetEnemy(EnemyType.GERM, new Vector3(Random.Range(-8.0f, 8.1f), 6, 0), Quaternion.identity);
+            var newEnemy = EnemyFactory.GetInstance().GetEnemy(EnemyType.GERM, new Vector3(Random.Range(-8.0f, 8.1f), 6, 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
         }
         yield return new WaitForSeconds(2.0f);
@@ -55,7 +55,7 @@ public sealed class Stage0 : GameScene
             for (int j = -4; j < 9; j += 8)
             {
 
-                var newEnemy = enemySpawner.GetEnemy(EnemyType.VIRUS, new Vector3(j, 6, 0), Quaternion.identity);
+                var newEnemy = EnemyFactory.GetInstance().GetEnemy(EnemyType.VIRUS, new Vector3(j, 6, 0), Quaternion.identity);
             }
             yield return new WaitForSeconds(1.5f);
         }

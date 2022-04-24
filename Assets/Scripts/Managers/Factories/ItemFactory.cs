@@ -12,7 +12,7 @@ public enum ItemType
     INVINCIBILITY,
 }
 
-public sealed class ItemFactory : MonoBehaviour
+public sealed class ItemFactory : BaseManager<EnemyFactory>
 {
     #region Item Factory's Base Datas
     [Header("Item Factory's Base Datas")]

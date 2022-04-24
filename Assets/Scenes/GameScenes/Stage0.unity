@@ -496,4 +496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <backgroundRenderer>k__BackingField: {fileID: 0}
   <backgroundAnim>k__BackingField: {fileID: 0}
-  <myEnemy>k__BackingField: {fileID: 0}
+  <gameTime>k__BackingField: 0
+  curCondition: 0
+  isBossAppeared: 0
+  <killCount>k__BackingField: 0
+  <enemySpawner>k__BackingField: {fileID: 0}

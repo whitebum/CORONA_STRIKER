@@ -7,7 +7,7 @@ public sealed class TypeCencer : EnemyCtrl
     protected override void SetEnemyDatas()
     {
         entityHP            = 10.0f;
-        moveSpeed           = /*2*/0.0f;
+        moveSpeed           = 2.0f;
         bulletSpeed         = 5.0f;
         attackIntervalTime  = 2.0f;
         dropScore           = 500;
