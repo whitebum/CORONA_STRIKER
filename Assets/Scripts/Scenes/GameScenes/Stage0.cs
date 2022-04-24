@@ -5,22 +5,17 @@ using UnityEngine;
 public sealed class Stage0 : GameScene
 {
     #region
-    [field: SerializeField] private EnemyFactory     myEnemy      { get; set; } = null;
-    #endregion
-    #region
     private void Start()
     {
-        //StartCoroutine("EnemySpawnPattern1");
-        //myEnemy.GetComponent<EnemyFactory>();
-        //var newEnemy = myEnemy.GetEnemy(EnemyType.RED,new Vector3(0,0,0), Quaternion.identity);
+        StartCoroutine("EnemySpawnPattern3");
     }
     #endregion
     #region
     private IEnumerator EnemySpawnPattern1()
     {
-        for(int i = 0; i<5; ++i)
+        for (int i = 0; i < 5; ++i)
         {
-            var newEnemy = myEnemy.GetEnemy(EnemyType.RED, new Vector3(Random.Range(-8.0f,8.1f), 6, 0), Quaternion.identity);
+            var newEnemy = enemySpawner.GetEnemy(EnemyType.CENCER, new Vector3(Random.Range(-8.0f, 8.1f), 6, 0), Quaternion.identity);
         }
 
         yield return new WaitForSeconds(2.0f);
@@ -28,12 +23,12 @@ public sealed class Stage0 : GameScene
     }
     private IEnumerator EnemySpawnPattern2()
     {
-        var newGreenEnemy = myEnemy.GetEnemy(EnemyType.GREEN, new Vector3(0, 6, 0), Quaternion.identity);
-        for (int i = 0; i < 4; ++ i)
+        var newGreenEnemy = enemySpawner.GetEnemy(EnemyType.VIRUS, new Vector3(0, 6, 0), Quaternion.identity);
+        for (int i = 0; i < 4; ++i)
         {
-            for(int j = -5; j <11; j+=10)
+            for (int j = -5; j < 11; j += 10)
             {
-                var newYellowEnemy = myEnemy.GetEnemy(EnemyType.YELLOW, new Vector3(j, 6, 0), Quaternion.identity);
+                var newYellowEnemy = enemySpawner.GetEnemy(EnemyType.GERM, new Vector3(j, 6, 0), Quaternion.identity);
             }
             yield return new WaitForSeconds(0.4f);
         }
@@ -42,25 +37,25 @@ public sealed class Stage0 : GameScene
     }
     private IEnumerator EnemySpawnPattern3()
     {
-        for(int i = -6; i<7; i+= 6)
+        for (int i = -6; i < 7; i += 6)
         {
-            var newEnemy = myEnemy.GetEnemy(EnemyType.RED, new Vector3(i, 6, 0), Quaternion.identity);
+            var newEnemy = enemySpawner.GetEnemy(EnemyType.CENCER, new Vector3(i, 6, 0), Quaternion.identity);
         }
-        for (int i = 0; i<5; ++ i)
+        for (int i = 0; i < 5; ++i)
         {
-            var newEnemy = myEnemy.GetEnemy(EnemyType.YELLOW, new Vector3(Random.Range(-8.0f, 8.1f), 6, 0), Quaternion.identity);
+            var newEnemy = enemySpawner.GetEnemy(EnemyType.GERM, new Vector3(Random.Range(-8.0f, 8.1f), 6, 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
         }
         yield return new WaitForSeconds(2.0f);
     }
     private IEnumerator EnemySpawnPattern4()
     {
-        for(int i = 0; i<2; ++ i)
+        for (int i = 0; i < 2; ++i)
         {
-            for(int j = -4; j<9; j+=8)
+            for (int j = -4; j < 9; j += 8)
             {
 
-                var newEnemy = myEnemy.GetEnemy(EnemyType.GREEN, new Vector3(j, 6, 0), Quaternion.identity);
+                var newEnemy = enemySpawner.GetEnemy(EnemyType.VIRUS, new Vector3(j, 6, 0), Quaternion.identity);
             }
             yield return new WaitForSeconds(1.5f);
         }
@@ -68,7 +63,5 @@ public sealed class Stage0 : GameScene
         yield return new WaitForSeconds(1.0f);
     }
 
-
     #endregion
-
 }
