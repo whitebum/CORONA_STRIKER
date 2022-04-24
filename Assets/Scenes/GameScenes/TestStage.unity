@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2394687593512198682, guid: 361133b668207e24a92bd1bc74df88bf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 361133b668207e24a92bd1bc74df88bf, type: 3}
@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2394687593512198682, guid: 20553fa864b71c54d93564e622adc162, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20553fa864b71c54d93564e622adc162, type: 3}
@@ -556,7 +556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2394687593512198682, guid: 4820251af0da8a04f899e0980a4d6a0d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4820251af0da8a04f899e0980a4d6a0d, type: 3}
@@ -617,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2394687593512198682, guid: afb4dc3d523e4684090f18b51de8198f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afb4dc3d523e4684090f18b51de8198f, type: 3}
@@ -631,6 +631,10 @@ PrefabInstance:
     - target: {fileID: 2734838459746696856, guid: 80426563fb3dc3c46b5af466f208f4d5, type: 3}
       propertyPath: m_Name
       value: WhiteCell
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734838459746696856, guid: 80426563fb3dc3c46b5af466f208f4d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2734838459746696861, guid: 80426563fb3dc3c46b5af466f208f4d5, type: 3}
       propertyPath: m_RootOrder
@@ -732,6 +736,10 @@ PrefabInstance:
     - target: {fileID: 6941347433605859732, guid: fd96c81c8f0092645bad0db9d7e287ac, type: 3}
       propertyPath: m_Name
       value: RedCell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941347433605859732, guid: fd96c81c8f0092645bad0db9d7e287ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd96c81c8f0092645bad0db9d7e287ac, type: 3}
