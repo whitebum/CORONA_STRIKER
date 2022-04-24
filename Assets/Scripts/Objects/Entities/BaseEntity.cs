@@ -20,8 +20,6 @@ public abstract class BaseEntity : MonoBehaviour
     #region Unity Messages
     private void Awake()
     {
-        gameObject.layer = LayerMask.NameToLayer("Entity");
-
         entityAnim      = GetComponent<Animator>();
         entityRenderer  = GetComponent<SpriteRenderer>();
 

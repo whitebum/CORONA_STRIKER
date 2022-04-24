@@ -84,21 +84,21 @@ public sealed class EnemyFactory : MonoBehaviour
         enemyBank.Add(usedEnemy);
     }
 
-    private EnemyCtrl GetEnemyInBank(EnemyType type) => type switch
+    private EnemyCtrl GetEnemyInOriginals(EnemyType type) => type switch
     {
-        EnemyType.GREEN => enemyBank.Find((enemy) => enemy is GreenEnemy),
-        EnemyType.YELLOW => enemyBank.Find((enemy) => enemy is YellowEnemy),
-        EnemyType.RED => enemyBank.Find((enemy) => enemy is RedEnemy),
-        EnemyType.BOSS => enemyBank.Find((enemy) => enemy is BossEnemy),
+        EnemyType.GREEN => originals.Find((enemy) => enemy is TypeVirus),
+        EnemyType.YELLOW => originals.Find((enemy) => enemy is TypeGerm),
+        EnemyType.RED => originals.Find((enemy) => enemy is TypeCencer),
+        EnemyType.BOSS => originals.Find((enemy) => enemy is TypeCorona),
         _ => null,
     };
 
-    private EnemyCtrl GetEnemyInOriginals(EnemyType type) => type switch
+    private EnemyCtrl GetEnemyInBank(EnemyType type) => type switch
     {
-        EnemyType.GREEN => originals.Find((enemy) => enemy is GreenEnemy),
-        EnemyType.YELLOW => originals.Find((enemy) => enemy is YellowEnemy),
-        EnemyType.RED => originals.Find((enemy) => enemy is RedEnemy),
-        EnemyType.BOSS => originals.Find((enemy) => enemy is BossEnemy),
+        EnemyType.GREEN => enemyBank.Find((enemy) => enemy is TypeVirus),
+        EnemyType.YELLOW => enemyBank.Find((enemy) => enemy is TypeGerm),
+        EnemyType.RED => enemyBank.Find((enemy) => enemy is TypeCencer),
+        EnemyType.BOSS => enemyBank.Find((enemy) => enemy is TypeCorona),
         _ => null,
     };
     #endregion

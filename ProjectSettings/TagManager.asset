@@ -19,11 +19,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Background
-  - Bullet
-  - Entity
-  - Item
-  - Effect
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -48,4 +48,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 830022959
+    locked: 0
+  - name: Bullet
+    uniqueID: 1446009993
+    locked: 0
+  - name: Entity
+    uniqueID: 215042931
+    locked: 0
+  - name: Item
+    uniqueID: 3560816203
+    locked: 0
+  - name: Effect
+    uniqueID: 2079361139
     locked: 0
