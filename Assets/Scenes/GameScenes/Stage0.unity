@@ -496,3 +496,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <backgroundRenderer>k__BackingField: {fileID: 0}
   <backgroundAnim>k__BackingField: {fileID: 0}
+  <myEnemy>k__BackingField: {fileID: 0}
